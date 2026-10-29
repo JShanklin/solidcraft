@@ -6154,7 +6154,7 @@ mod tests {
         // update bookkeeping (not a setting, and Cancel keeps it) does not.
         app.preferences.update.last_check += 1.0;
         assert_eq!(draw(&mut app, vec![]), Some(0.0), "update bookkeeping is not a change");
-        app.keymap.custom.insert("solid.extrude".into(), "Shift+E".into());
+        app.keymap.custom.insert("solid.extrude".into(), vec!["Shift+E".into()]);
         assert_eq!(draw(&mut app, vec![]), Some(1.0), "a rebinding is a change");
         let v = control(&mut app, &json!({"button": "apply"})).unwrap();
         assert_eq!(v["apply_enabled"], false);
